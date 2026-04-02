@@ -1,35 +1,40 @@
-# a) Input & Variables
 
-driver = input("Enter driver name: ")
-distance = float(input("Enter distance (km): "))
-consumption = float(input("Enter fuel consumption (L/100km): "))
-fuel_price = float(input("Enter fuel price (KZT/L): "))
+# Task B1 — Trip Category (if / elif / else)
+driver=input("Enter driver name:")
+destination=input("Enter destination:")
+distance=float(input("Enter distance (km):"))
+consumption=float(input("Enter fuel consumption (L/100km):"))
+price=float(input("Enter fuel price (KZT/L):"))
 
-# b) Calculations
+fuel_cost=(distance/100) * consumption *price
 
-litres_needed = distance * consumption / 100
-fuel_cost = litres_needed * fuel_price
-cost_per_km = fuel_cost / distance
+if distance < 100:
+    category="Short trip"
+elif distance <500:
+    category="Medium trip"
+else:
+    category="Long trip"
 
-# c) Formatted Output
-print("=" * 30)
-print("ROAD TRIP SUMMARY")
-print("=" * 30)
 
-print("Driver :", driver)
-print("Distance :", distance, "km")
-print("Consumption :", consumption, "L/100km")
-print("Fuel price :", fuel_price, "KZT/L")
+print("=========================")
+print("driver:",driver)
+print("destination:",destination.upper())
+print("distance:",distance,"km")
+print("fuel cost:",fuel_cost,"KZT")
+print("category:",category)
+print("=========================")
 
-print("-" * 30)
 
-print("Litres needed:", litres_needed, "L")
-print("Fuel cost :", fuel_cost, "KZT")
-print("Cost per km :", cost_per_km, "KZT")
+# Task B2 — Cost Breakdown (for loop)
+print("cost breakdown:")
+for km in range(100,int(distance),100):
+    cost=(km/100) * consumption * price
+    print(km, "km",cost,"KZT")
 
-print("=" * 30)
+# Task B3 — Destination Analysis (strings)
+print("destination uppercase:",destination.upper())
+print("destination lowercase:",destination.lower())
+print("Length:",len(destination))
+print("letter 'a' count",destination.lower().count("a"))
 
-# d) Comparison
 
-print("Trip longer than 300 km:", distance > 300)
-print("Fuel cost above 5000 KZT:", fuel_cost > 5000)
